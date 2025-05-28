@@ -2,20 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vicious Cycles</title>
+  <title>Guestbook</title>
   <style>
     body {
       background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 50px;
+      color: limegreen;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      text-align: left;
+    }
+    input, textarea {
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 5px;
+      margin: 5px 0;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    h1 {
+      color: limegreen;
+    }
+    button {
+      margin-top: 10px;
+      padding: 5px 10px;
+      background-color: white;
+      color: black;
+      border: none;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to Vicious Cycles</h1>
-  <p>Our website is under construction. Stay tuned for something epic.</p>
-</body>
-</html>
+  <div class="container">
+    <h1>Guestbook</h1>
+    <form>
+      <label for="name">N
