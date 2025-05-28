@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Carters a Punk</title>
+  <title>Guestbook with Red Clock</title>
   <style>
     body {
       background-color: black;
-      color: red;
+      color: #ff0000;
       font-family: 'Courier New', Courier, monospace;
       text-align: center;
       margin: 0;
@@ -24,11 +24,6 @@
       font-size: 32px;
       margin-bottom: 20px;
     }
-    #clock {
-      font-size: 20px;
-      margin-bottom: 30px;
-      color: red;
-    }
     label {
       display: block;
       margin: 10px 0 5px 0;
@@ -39,13 +34,10 @@
       padding: 8px;
       margin-bottom: 15px;
       box-sizing: border-box;
-      color: red;
-      background-color: black;
-      border: 1px solid red;
     }
     input[type="submit"] {
       padding: 8px 16px;
-      background-color: red;
+      background-color: #ff0000;
       color: black;
       border: none;
       cursor: pointer;
@@ -53,23 +45,21 @@
     input[type="submit"]:hover {
       background-color: #cc0000;
     }
-    .corner-image {
-      position: fixed;
-      bottom: -40%;
-      right: -40%;
-      width: 60%;
-      z-index: 0;
-      pointer-events: none;
+    .clock {
+      font-size: 48px;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+      color: #ff0000;
     }
   </style>
 </head>
 <body>
+
+  <!-- Digital Clock -->
+  <div class="clock" id="clock"></div>
+
   <div class="container">
-    <h1>Carters a Punk</h1>
-
-    <!-- Digital Clock -->
-    <p id="clock"></p>
-
+    <h1>Guestbook</h1>
     <form>
       <label for="name">Name:</label>
       <input type="text" id="name" name="name">
@@ -83,19 +73,29 @@
       <input type="submit" value="Submit">
     </form>
   </div>
-  
-  <!-- Globe Image in the corner -->
-  <img src="globe.png" alt="Globe" class="corner-image">
 
-  <!-- Digital Clock Script -->
+  <!-- Clock Script -->
   <script>
     function updateClock() {
       const now = new Date();
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
-      const timeString = `${hours}:${minutes}:${seconds}`;
-      document.getElementById("clock").textContent = "Current Time: " + timeString;
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+      let seconds = now.getSeconds();
+
+      // Format to always have two digits
+      hours = (hours < 10 ? '0' : '') + hours;
+      minutes = (minutes < 10 ? '0' : '') + minutes;
+      seconds = (seconds < 10 ? '0' : '') + seconds;
+
+      const timeString = hours + ':' + minutes + ':' + seconds;
+
+      document.getElementById('clock').textContent = timeString;
     }
+
+    // Run it immediately, then every second
+    updateClock();
     setInterval(updateClock, 1000);
-    update
+  </script>
+
+</body>
+</html>
