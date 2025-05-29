@@ -1,100 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Guestbook with Red Clock</title>
+  <meta charset="UTF-8">
+  <title>Vicious Poser</title>
   <style>
     body {
       background-color: black;
-      color: #ff0000;
-      font-family: 'Courier New', Courier, monospace;
-      text-align: center;
+      color: red;
+      font-family: monospace;
       margin: 0;
-      padding: 0;
-      height: 100vh;
       overflow: hidden;
     }
-    .container {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-      max-width: 400px;
-      margin: 0 auto;
-    }
-    h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-    label {
-      display: block;
-      margin: 10px 0 5px 0;
-      text-align: left;
-    }
-    input[type="text"], textarea {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 15px;
-      box-sizing: border-box;
-    }
-    input[type="submit"] {
-      padding: 8px 16px;
-      background-color: #ff0000;
-      color: black;
-      border: none;
-      cursor: pointer;
-    }
-    input[type="submit"]:hover {
-      background-color: #cc0000;
-    }
-    .clock {
+
+    #brand {
+      position: absolute;
+      top: 20px;
+      left: 20px;
       font-size: 48px;
-      margin-bottom: 30px;
-      letter-spacing: 2px;
-      color: #ff0000;
+      color: red;
+    }
+
+    #email-box {
+      position: absolute;
+      top: 100px;
+      left: 20px;
+    }
+
+    #email-box input {
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    #clock {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 60px;
+      color: red;
+    }
+
+    #globe {
+      position: absolute;
+      bottom: -40%;
+      right: -40%;
+      width: 600px;
+      pointer-events: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- Digital Clock -->
-  <div class="clock" id="clock"></div>
+  <div id="brand">VICIOUS</div>
 
-  <div class="container">
-    <h1>Guestbook</h1>
-    <form>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name">
-
-      <label for="location">Location:</label>
-      <input type="text" id="location" name="location">
-
-      <label for="comments">Comments:</label>
-      <textarea id="comments" name="comments"></textarea>
-
-      <input type="submit" value="Submit">
-    </form>
+  <div id="email-box">
+    <input type="text" placeholder="enter e-mail 4 discountz %">
   </div>
 
-  <!-- Clock Script -->
+  <div id="clock"></div>
+
+  <img src="globe.png" id="globe" alt="globe graphic">
+
   <script>
     function updateClock() {
       const now = new Date();
       let hours = now.getHours();
       let minutes = now.getMinutes();
-      let seconds = now.getSeconds();
 
-      // Format to always have two digits
-      hours = (hours < 10 ? '0' : '') + hours;
-      minutes = (minutes < 10 ? '0' : '') + minutes;
-      seconds = (seconds < 10 ? '0' : '') + seconds;
+      if (hours < 10) hours = '0' + hours;
+      if (minutes < 10) minutes = '0' + minutes;
 
-      const timeString = hours + ':' + minutes + ':' + seconds;
-
-      document.getElementById('clock').textContent = timeString;
+      document.getElementById('clock').textContent = `${hours}:${minutes}`;
     }
 
-    // Run it immediately, then every second
-    updateClock();
     setInterval(updateClock, 1000);
+    updateClock();
   </script>
 
 </body>
