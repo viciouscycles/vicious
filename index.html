@@ -70,19 +70,20 @@
   <img id="web" src="web.jpg" alt="web Image">
 
   <script>
-    function updateClock() {
-      const now = new Date();
-      let hours = now.getHours();
-      let minutes = now.getMinutes();
+function updateClock() {
+  const now = new Date();
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
 
-      if (hours < 10) hours = '0' + hours;
-      if (minutes < 10) minutes = '0' + minutes;
+  if (hours < 10) hours = '0' + hours;
+  if (minutes < 10) minutes = '0' + minutes;
 
-      document.getElementById('clock').textContent = `${hours}:${minutes}`;
-    }
+  document.getElementById('clock').innerHTML = `${hours}:<span class="blinking">${minutes}</span>`;
+}
 
-    setInterval(updateClock, 1000);
-    updateClock();
+setInterval(updateClock, 1000);
+updateClock();
+
   </script>
 
 </body>
